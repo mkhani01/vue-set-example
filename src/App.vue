@@ -1,19 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <child :sendChildData="sendChildData"/>
+  <div>
+  <h6>
+  This is the value of your object in parent component :
+{{calculationNumber}}
+  </h6>
+  </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Child from "./components/child.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Child: Child,
+  },
+  data(){
+    return {
+ calculationNumber:0
+    }
+  },
+  methods:{
+    sendChildData(number){
+      this.calculationNumber = number
+    }
   }
-}
+};
 </script>
 
 <style>
